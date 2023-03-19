@@ -1,0 +1,13 @@
+.card-list__item {
+  width: 300px;
+  border: 2px solid rgb(104, 26, 176);
+  padding: 10px 20px;
+}
+
+.card-list_title {
+  color: rgb(104, 26, 176);
+}
+
+.card-list__image {
+  width: 100%;
+}

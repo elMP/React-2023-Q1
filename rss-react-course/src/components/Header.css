@@ -1,0 +1,14 @@
+.navigation__list {
+  display: flex;
+  list-style: none;
+  justify-content: flex-end;
+  column-gap: 30px;
+}
+
+.navigation__link {
+  color: rgb(87, 82, 82);
+}
+
+.navigation__link.active {
+  color: rgb(104, 26, 176);
+}
