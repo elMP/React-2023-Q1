@@ -10,13 +10,11 @@ import HomePage from 'pages/MainPage'
 
 function App() {
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="about" element={<About />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/" element={<MainPage />} />
+      <Route path="about" element={<About />} />
+      <Route path='*' element={<NotFound />} />
+    </Routes>
   )
 }
 
