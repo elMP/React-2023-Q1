@@ -9,7 +9,7 @@ class NotFound extends React.Component {
         <Header title="404" />
         <h2>404 - not found</h2>
       </div>
-    )
+    );
   }
 }
 

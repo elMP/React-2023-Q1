@@ -9,7 +9,7 @@ class About extends React.Component {
         <Header title="About Us" />
         <h2>About Us</h2>
       </div>
-    )
+    );
   }
 }
 
