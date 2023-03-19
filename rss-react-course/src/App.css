@@ -13,3 +13,10 @@
 .page-main {
   text-align: left;
 }
+
+.card-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+}
