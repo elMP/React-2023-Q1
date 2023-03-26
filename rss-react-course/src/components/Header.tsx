@@ -23,6 +23,16 @@ class Header extends React.Component<HeaderProps> {
             </li>
             <li>
               <NavLink
+                to="addbook"
+                className={({ isActive }) =>
+                  isActive ? 'navigation__link active' : 'navigation__link'
+                }
+              >
+                Add book
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/about"
                 className={({ isActive }) =>
                   isActive ? 'navigation__link active' : 'navigation__link'
