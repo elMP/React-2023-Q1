@@ -38,20 +38,22 @@ class AddBook extends React.Component {
   handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    console.log(this.state.newBookData.title.current?.value);
-    console.log(this.state.newBookData.author.current?.value);
-    console.log(this.state.newBookData.illustrator.current?.value);
+    console.log(this.state.newBookData.publishing.current?.value.substring(0, 4));
+    console.log(this.state.newBookData.year.current?.value);
+    console.log(this.state.newBookData.img.current?.value);
 
     const newBook: Book = {
       id: this.state.cardList.length,
       title: this.state.newBookData.title.current?.value || '',
       author: this.state.newBookData.author.current?.value || '',
       illustrator: this.state.newBookData.illustrator.current?.value || '',
-      publishing: '',
-      year: 2000,
+      publishing: this.state.newBookData.publishing.current?.value || '',
+      year: Number(this.state.newBookData.year.current?.value.substring(0, 4)) || 0,
       age: 2,
       description: '',
-      img: '',
+      img: this.state.newBookData.img.current?.files![0]
+        ? URL.createObjectURL(this.state.newBookData.img.current?.files[0] as Blob)
+        : '',
     };
 
     this.setState({ ...this.state, cardList: [...this.state.cardList, newBook] });
@@ -75,6 +77,28 @@ class AddBook extends React.Component {
           <label>
             Illustrator:
             <input type="text" ref={this.state.newBookData.illustrator} />
+          </label>
+          <label>
+            Publishing
+            <select defaultValue="" ref={this.state.newBookData.publishing}>
+              <option value="" disabled>
+                Select publishing
+              </option>
+              <option value="Clever-Media">Clever-Media</option>
+              <option value="АСТ">АСТ</option>
+              <option value="Росмэн">Росмэн</option>
+              <option value="Махаон">Махаон</option>
+              <option value="Энас-книга">Энас-книга</option>
+              <option value="Машинки творения">Машинки творения</option>
+            </select>
+          </label>
+          <label>
+            Publishing date:
+            <input type="date" ref={this.state.newBookData.year} />
+          </label>
+          <label>
+            Book photo:
+            <input type="file" ref={this.state.newBookData.img} />
           </label>
           <button type="submit">Add</button>
         </form>
