@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import SearchBar from '../components/SearchBar';
 import Card from '../components/Card';
 
-type Book = {
+export type Book = {
   id: number;
   title: string;
   author: string;
