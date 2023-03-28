@@ -10,7 +10,10 @@ export type NewBookData = {
   illustrator: React.RefObject<HTMLInputElement>;
   publishing: React.RefObject<HTMLSelectElement>;
   year: React.RefObject<HTMLInputElement>;
-  age: React.RefObject<HTMLInputElement>;
+  age1: React.RefObject<HTMLInputElement>;
+  age2: React.RefObject<HTMLInputElement>;
+  age3: React.RefObject<HTMLInputElement>;
+  age4: React.RefObject<HTMLInputElement>;
   description: React.RefObject<HTMLTextAreaElement>;
   img: React.RefObject<HTMLInputElement>;
 };
@@ -28,7 +31,10 @@ class AddBook extends React.Component {
       illustrator: React.createRef(),
       publishing: React.createRef(),
       year: React.createRef(),
-      age: React.createRef(),
+      age1: React.createRef(),
+      age2: React.createRef(),
+      age3: React.createRef(),
+      age4: React.createRef(),
       description: React.createRef(),
       img: React.createRef(),
     },
@@ -38,9 +44,16 @@ class AddBook extends React.Component {
   handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    console.log(this.state.newBookData.publishing.current?.value.substring(0, 4));
-    console.log(this.state.newBookData.year.current?.value);
-    console.log(this.state.newBookData.img.current?.value);
+    let age = 0;
+    if (this.state.newBookData.age1.current?.checked) {
+      age = 1;
+    } else if (this.state.newBookData.age2.current?.checked) {
+      age = 3;
+    } else if (this.state.newBookData.age3.current?.checked) {
+      age = 6;
+    } else {
+      age = 12;
+    }
 
     const newBook: Book = {
       id: this.state.cardList.length,
@@ -49,7 +62,7 @@ class AddBook extends React.Component {
       illustrator: this.state.newBookData.illustrator.current?.value || '',
       publishing: this.state.newBookData.publishing.current?.value || '',
       year: Number(this.state.newBookData.year.current?.value.substring(0, 4)) || 0,
-      age: 2,
+      age: age,
       description: '',
       img: this.state.newBookData.img.current?.files![0]
         ? URL.createObjectURL(this.state.newBookData.img.current?.files[0] as Blob)
@@ -100,6 +113,25 @@ class AddBook extends React.Component {
             Book photo:
             <input type="file" ref={this.state.newBookData.img} />
           </label>
+          <div className="age">
+            <p>Age:</p>
+            <label>
+              <input name="age" type="radio" ref={this.state.newBookData.age1} />
+              1 - 3 <br />
+            </label>
+            <label>
+              <input name="age" type="radio" ref={this.state.newBookData.age2} />
+              3 - 6 <br />
+            </label>
+            <label>
+              <input name="age" type="radio" ref={this.state.newBookData.age3} />
+              6 - 11 <br />
+            </label>
+            <label>
+              <input name="age" type="radio" ref={this.state.newBookData.age4} />
+              12+ <br />
+            </label>
+          </div>
           <button type="submit">Add</button>
         </form>
 

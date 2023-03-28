@@ -40,3 +40,7 @@
 .new-book-form button {
   width: 100%;
 }
+
+.age label {
+  justify-content: flex-start;
+}
