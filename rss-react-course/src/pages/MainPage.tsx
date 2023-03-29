@@ -14,6 +14,7 @@ export type Book = {
   age: number;
   description: string;
   img: string;
+  mustRead?: boolean;
 };
 const bookList: Book[] = [
   {

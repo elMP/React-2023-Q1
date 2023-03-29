@@ -11,12 +11,13 @@ export type CardProps = {
   age: number;
   description: string;
   img: string;
+  mustread?: boolean;
 };
 
 class Card extends React.Component<CardProps> {
   render() {
     return (
-      <li className="card-list__item">
+      <li className={`card-list__item ${this.props.mustread ? 'card-list__item-mustread' : ''}`}>
         <h3 className="card-list_title">{this.props.title}</h3>
         <img className="card-list__image" src={this.props.img} alt="" />
         <div>Автор: {this.props.author}</div>

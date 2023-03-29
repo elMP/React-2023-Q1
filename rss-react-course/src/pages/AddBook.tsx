@@ -16,6 +16,7 @@ export type NewBookData = {
   age4: React.RefObject<HTMLInputElement>;
   description: React.RefObject<HTMLTextAreaElement>;
   img: React.RefObject<HTMLInputElement>;
+  checkbox: React.RefObject<HTMLInputElement>;
 };
 
 type FormState = {
@@ -37,12 +38,14 @@ class AddBook extends React.Component {
       age4: React.createRef(),
       description: React.createRef(),
       img: React.createRef(),
+      checkbox: React.createRef(),
     },
     cardList: [],
   };
 
   handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    console.log(this.state.newBookData.checkbox.current?.checked);
 
     let age = 0;
     if (this.state.newBookData.age1.current?.checked) {
@@ -67,6 +70,7 @@ class AddBook extends React.Component {
       img: this.state.newBookData.img.current?.files![0]
         ? URL.createObjectURL(this.state.newBookData.img.current?.files[0] as Blob)
         : '',
+      mustRead: this.state.newBookData.checkbox.current?.checked,
     };
 
     this.setState({ ...this.state, cardList: [...this.state.cardList, newBook] });
@@ -132,6 +136,9 @@ class AddBook extends React.Component {
               12+ <br />
             </label>
           </div>
+          <label className="mustread">
+            <input name="checkbox" type="checkbox" ref={this.state.newBookData.checkbox} />Must read<br />
+          </label>
           <button type="submit">Add</button>
         </form>
 
@@ -147,6 +154,7 @@ class AddBook extends React.Component {
               age={el.age}
               description={el.description}
               img={el.img}
+              mustread={el.mustRead}
             />
           ))}
         </ul>

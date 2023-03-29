@@ -44,3 +44,11 @@
 .age label {
   justify-content: flex-start;
 }
+
+.card-list__item-mustread {
+  background-color: rgb(202, 115, 61);
+}
+
+label.mustread {
+  justify-content: flex-start;
+}
