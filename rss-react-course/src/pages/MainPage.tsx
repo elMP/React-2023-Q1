@@ -96,34 +96,32 @@ const bookList: Book[] = [
   },
 ];
 
-class MainPage extends React.Component {
-  render() {
-    return (
-      <div className="container">
-        <Header title="Children books list" />
-        <main className="page-main">
-          <>
-            <SearchBar />
-            <ul className="card-list">
-              {bookList.map((el) => (
-                <Card
-                  key={el.id}
-                  title={el.title}
-                  author={el.author}
-                  illustrator={el.illustrator}
-                  publishing={el.publishing}
-                  year={el.year}
-                  age={el.age}
-                  description={el.description}
-                  img={el.img}
-                />
-              ))}
-            </ul>
-          </>
-        </main>
-      </div>
-    );
-  }
+function MainPage() {
+  return (
+    <div className="container">
+      <Header title="Children books list" />
+      <main className="page-main">
+        <>
+          <SearchBar />
+          <ul className="card-list">
+            {bookList.map((el) => (
+              <Card
+                key={el.id}
+                title={el.title}
+                author={el.author}
+                illustrator={el.illustrator}
+                publishing={el.publishing}
+                year={el.year}
+                age={el.age}
+                description={el.description}
+                img={el.img}
+              />
+            ))}
+          </ul>
+        </>
+      </main>
+    </div>
+  );
 }
 
 export default MainPage;
